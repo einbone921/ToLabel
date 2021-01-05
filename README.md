@@ -36,16 +36,14 @@
 
 
 * テーブル定義書
-https://docs.google.com/spreadsheets/d/1vwhLTPIWMRoYqPbVupnTFtQ9Jwgw_k9AEbS77pBbJ74/edit#gid=0
+https://docs.google.com/spreadsheets/d/1vwhLTPIWMRoYqPbVupnTFtQ9Jwgw_k9AEbS77pBbJ74/edit?usp=sharing
 
 * アプリケーション詳細設計
-https://docs.google.com/spreadsheets/d/1qIxOESobN1h4LjA5aoTZRyrk3q8LZ0z05Fx11vqi1nE/edit#gid=0
-
-
+https://docs.google.com/spreadsheets/d/1qIxOESobN1h4LjA5aoTZRyrk3q8LZ0z05Fx11vqi1nE/edit?usp=sharing
 
 ## チャレンジ要素一覧
 
-https://docs.google.com/spreadsheets/d/1h-3z6XyLYxO2Lg3afL6AOYUjer-DqbXTPQu12sQ6jIc/edit#gid=0
+https://docs.google.com/spreadsheets/d/1h-3z6XyLYxO2Lg3afL6AOYUjer-DqbXTPQu12sQ6jIc/edit?usp=sharing
 
 ## 開発環境
 
