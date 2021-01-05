@@ -35,10 +35,12 @@
 ![ER2](https://user-images.githubusercontent.com/73771296/103625231-09927980-4f7e-11eb-83cb-af7d070e6759.png)
 
 
-* テーブル定義書
+* テーブル定義書  
+
 https://docs.google.com/spreadsheets/d/1vwhLTPIWMRoYqPbVupnTFtQ9Jwgw_k9AEbS77pBbJ74/edit?usp=sharing
 
-* アプリケーション詳細設計
+* アプリケーション詳細設計  
+
 https://docs.google.com/spreadsheets/d/1qIxOESobN1h4LjA5aoTZRyrk3q8LZ0z05Fx11vqi1nE/edit?usp=sharing
 
 ## チャレンジ要素一覧
