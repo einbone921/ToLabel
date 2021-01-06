@@ -43,7 +43,7 @@ https://docs.google.com/spreadsheets/d/1vwhLTPIWMRoYqPbVupnTFtQ9Jwgw_k9AEbS77pBb
 
 https://docs.google.com/spreadsheets/d/1qIxOESobN1h4LjA5aoTZRyrk3q8LZ0z05Fx11vqi1nE/edit?usp=sharing
 
-## チャレンジ要素一覧
+## 機能要素一覧
 
 https://docs.google.com/spreadsheets/d/1h-3z6XyLYxO2Lg3afL6AOYUjer-DqbXTPQu12sQ6jIc/edit?usp=sharing
 
