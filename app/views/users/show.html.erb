@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row"></div>
+  <div class="row">
+    <div class="col-md-3">
+      <p><%= attachment_image_tag @user, :profile_image_id, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></p>
+      <p><%= @user.name %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <p>follower</p>
+    </div>
+    <div class="col-md-6">
+      <p>following</p>
+    </div>
+  </div>
+  <div class="row">
+    <p>説明文</p>
+    <%= @user.introduction %>
+  </div>
+
+
+</div>
