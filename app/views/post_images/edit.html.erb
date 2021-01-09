@@ -2,14 +2,14 @@
   <%= form_with model: @post_image, local:true do |f| %>
   <div class="row">
     <div class="col-md-6">
-      <div class="field">
-      <%= attachment_image_tag @post_image, :post_image, fallback: "no_image.jpg", size:"300x300" %>
-      <%= f.attachment_field :post_image %>
+      <div>
+        <%= attachment_image_tag @post_image, :post_image, size:"500x500" %>
+        <%= f.attachment_field :post_image %>
       </div>
     </div>
 
     <div class="col-md-6">
-      <div class="field">
+      <div>
         <%= f.label :"説明" %>
         <%= f.text_field :caption, autofocus: true %>
       </div>
@@ -27,7 +27,7 @@
       </div>
 
       <div class="field">
-        <%= f.submit "Post" %>
+        <%= f.submit "Edit" %>
       </div>
     </div>
   </div>
