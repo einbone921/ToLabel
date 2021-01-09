@@ -1,5 +1,4 @@
 class PostImagesController < ApplicationController
-
   def new
     @post_image = PostImage.new
   end
@@ -12,6 +11,7 @@ class PostImagesController < ApplicationController
   end
 
   def show
+    @post_image = PostImage.find(params[:id])
   end
 
   def index

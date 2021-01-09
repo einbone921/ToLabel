@@ -7,5 +7,4 @@ class User < ApplicationRecord
   has_many :post_image, dependent: :destroy
 
   attachment :profile_image
-
 end
