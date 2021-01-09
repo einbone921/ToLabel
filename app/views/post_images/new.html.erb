@@ -1,0 +1,36 @@
+<div class="container">
+  <%= form_with model: @post_image, local:true do |f| %>
+  <%= render "layouts/error_messages", model: f.object %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="field">
+      <%= attachment_image_tag @post_image, :post_image, fallback: "no_image.jpg", size:"300x300" %>
+      <%= f.attachment_field :post_image %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="field">
+        <%= f.label :"説明" %>
+        <%= f.text_field :caption, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <h6>タグ</h6>
+      </div>
+
+      <div class="field">
+        <h6>エリア</h6>
+      </div>
+
+      <div class="field">
+        <h6>アドレス</h6>
+      </div>
+
+      <div class="field">
+        <%= f.submit "Post" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

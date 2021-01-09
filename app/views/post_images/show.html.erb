@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <p><%= attachment_image_tag @post_image, :post_image, size:"500x500" %></p>
+      <p><%= link_to "編集", edit_post_image_path %></p>
+      <p>説明: <%= @post_image.caption %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= attachment_image_tag @user, :profile_image %>
+  </div>
+
+  <div class="row">
+    <h4>タグ</h4>
+  </div>
+
+  <div class="row">
+    <h4>コメント</h4>
+  </div>
+
+  <div class="row">
+    <h4>Google Maps</h4>
+  </div>
+</div>
