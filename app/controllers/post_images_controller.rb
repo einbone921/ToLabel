@@ -1,4 +1,6 @@
 class PostImagesController < ApplicationController
+  before_action :authenticate_user!, except: :index
+
   def new
     @post_image = PostImage.new
   end
@@ -22,6 +24,9 @@ class PostImagesController < ApplicationController
 
   def edit
     @post_image = PostImage.find(params[:id])
+    if @post_image.user != current_user #ログインユーザがURLより他のユーザーの投稿編集画面に遷移した際に実行
+      redirect_to root_path
+    end
   end
 
   def update
