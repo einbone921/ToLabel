@@ -4,7 +4,7 @@ class PostImage < ApplicationRecord
   has_many :favorites, dependent: :destroy
   attachment :post_image
 
-  validates :post_image_id, presence: true
+  validates :post_image, presence: true
   validates :caption, presence: true
 
   def favorited_by?(user)
