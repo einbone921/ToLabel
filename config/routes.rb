@@ -5,7 +5,15 @@ Rails.application.routes.draw do
   }
   root to: 'homes#top'
   get '/about' => 'homes#about'
-  resources :users, only: [:show, :edit, :update]
+
+  #userにネスト
+  resources :users, only: [:show, :edit, :update] do
+    resource :relationships, only: [:create, :destroy]
+    get :follows, on: :member
+    get :followers, on: :member
+  end
+
+  #post_imageにネスト
   resources :post_images, only: [:new, :show, :create, :index, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]

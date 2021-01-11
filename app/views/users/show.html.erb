@@ -3,6 +3,13 @@
   <div class="row">
     <div class="col-md-3">
       <p><%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></p>
+    <% if current_user != @user %>
+      <% if @user.followed_by?(current_user) %>
+        <p><%= link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>
+      <% else %>
+        <p><%= link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+      <% end %>
+    <% end %>
       <p><%= @user.name %>
       <% if @user == current_user %>
         <span><%= link_to "編集", edit_user_path %></span>
@@ -10,14 +17,16 @@
       </p>
     </div>
   </div>
+  <% if @user == current_user %>
   <div class="row">
     <div class="col-md-6">
-      <p>follower</p>
+      <p><%= link_to "follower", followers_user_path(@user.id) %></p>
     </div>
     <div class="col-md-6">
-      <p>following</p>
+      <p><%= link_to "following", follows_user_path(@user.id) %></p>
     </div>
   </div>
+  <% end %>
   <h6>説明文</h6>
   <div class="row">
     <div class="col-md-10 border">
