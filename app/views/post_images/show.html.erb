@@ -38,7 +38,11 @@
 
   <div class="row">
     <% @post_image.tags.each do |tag| %>
-      <span>#<%= tag.tag_name %></span>
+      <span>
+        <%= link_to post_images_path(tag) do %>#
+         <%= tag.tag_name %>
+        <% end %>
+      </span>
     <% end %>
   </div>
 

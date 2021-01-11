@@ -25,7 +25,11 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.all
+    # if params[:tag_id].present?
+    #   @tag = Tag.find(params[:tag_id])
+    #   @post_images = @tag.post_images.order(created_at: :desc)
+    # end
+    @post_images = PostImage.all.order(created_at: :desc)
   end
 
   def edit
@@ -39,6 +43,8 @@ class PostImagesController < ApplicationController
   def update
     @post_image = PostImage.find(params[:id])
     if @post_image.update(post_image_params)
+      tag_list = tag_params[:tag_names].split(/[[:blank:]]+/).select(&:present?)
+      @post_image.save_tags(tag_list)
       redirect_to post_image_path(@post_image)
     else
       render "edit"
