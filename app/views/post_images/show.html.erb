@@ -37,7 +37,9 @@
   </div>
 
   <div class="row">
-    <h4>タグ</h4>
+    <% @post_image.tags.each do |tag| %>
+      <span>#<%= tag.tag_name %></span>
+    <% end %>
   </div>
 
   <% if user_signed_in? %>

@@ -9,6 +9,10 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
     if @post_image.save
+      #tag_paramsで受け取った文字列を空白区切りで配列化する
+      tag_list = tag_params[:tag_names].split(/[[:blank:]]+/).select(&:present?)
+      #post_image.rb内にsave_tagメソッドを定義
+      @post_image.save_tags(tag_list)
       redirect_to post_image_path(@post_image)
     else
       render "new"
@@ -47,5 +51,9 @@ class PostImagesController < ApplicationController
 
   def post_image_params
     params.require(:post_image).permit(:post_image, :caption)
+  end
+
+  def tag_params
+    params.require(:post_image).permit(:tag_names)
   end
 end
