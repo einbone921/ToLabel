@@ -3,15 +3,14 @@ class PostImagesController < ApplicationController
 
   def new
     @post_image = PostImage.new
+    @tag = Tag.new
   end
 
   def create
     @post_image = PostImage.new(post_image_params)
+    　tag_list = params[:post_images][:tag_name].split(nil)
     @post_image.user_id = current_user.id
     if @post_image.save
-      #tag_paramsで受け取った文字列を空白区切りで配列化する
-      tag_list = tag_params[:tag_names].split(/[[:blank:]]+/).select(&:present?)
-      #post_image.rb内にsave_tagメソッドを定義
       @post_image.save_tags(tag_list)
       redirect_to post_image_path(@post_image)
     else
@@ -25,11 +24,12 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    # if params[:tag_id].present?
-    #   @tag = Tag.find(params[:tag_id])
-    #   @post_images = @tag.post_images.order(created_at: :desc)
-    # end
-    @post_images = PostImage.all.order(created_at: :desc)
+    if params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      @post_images = @tag.post_images.order(created_at: :desc)
+    else
+      @post_images = PostImage.all.order(created_at: :desc)
+    end
   end
 
   def edit

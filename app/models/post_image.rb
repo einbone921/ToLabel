@@ -16,23 +16,22 @@ class PostImage < ApplicationRecord
 
   #postsコントローラで配列化した値を引数で受け取る
   def save_tags(tag_list)
-    tag_list.each do |tag|
-      #受け取った値がDBに存在しない場合 ＝ find_tagにnilが代入 → 処理を実行
-      unless find_tag = Tag.find_by(tag_name: tag.downcase)
-        begin
-          #createメソッドでタグの作成 & "!"で例外処理
-          self.tags.create!(tag_name: tag)
-          #例外が発生するとrescueが実行 → 値がnilになり、保存されずに次の処理へ
-        rescue
-          nil
-        end
-      # DBにタグが存在する場合 = 中間テーブルに投稿とタグのidを紐付け
-      else
-        TagMap.create!(post_image_id: self.id, tag_id: find_tag.id)
+    current_tags = self.tags.pluck(:tag_name)
+    unless self.tags.nil?
+      old_tags = current_tags - tags
+      new_tags = tags - current_tags
+
+      old_tags.each do |old_name|
+        self.tags.delete
+        Tag.find_by(tag_name:old_name)
+      end
+
+      new_tags.each do |new_name|
+        post_image_tag = Tag.find_or_create_by(tag_name:new_name)
+        self.tags << post_image_tag
       end
     end
   end
-
   #---------------------------END----------------------------------
 
   validates :post_image, presence: true
