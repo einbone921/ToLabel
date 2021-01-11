@@ -30,7 +30,8 @@ class PostImagesController < ApplicationController
 
   def edit
     @post_image = PostImage.find(params[:id])
-    if @post_image.user != current_user #ログインユーザがURLより他のユーザーの投稿編集画面に遷移した際に実行
+    #ログインユーザがURLより他のユーザーの投稿編集画面に遷移した際に実行
+    if @post_image.user != current_user
       redirect_to root_path
     end
   end

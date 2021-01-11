@@ -2,15 +2,15 @@ class PostImage < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
 
-  #========いいね機能の実装処理============
+  #------------いいね機能の実装処理--------------
   has_many :favorites, dependent: :destroy
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-  #================END=====================
+  #--------------------END------------------------
 
-  #=======タグ機能の実装処理===============
+  #----------------タグ機能の実装処理---------------------------------
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
@@ -33,7 +33,7 @@ class PostImage < ApplicationRecord
     end
   end
 
-  #=============END===============================================
+  #---------------------------END----------------------------------
 
   validates :post_image, presence: true
   validates :caption, presence: true
