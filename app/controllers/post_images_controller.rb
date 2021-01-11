@@ -25,7 +25,14 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.all
+    if params[:search].present?
+      @post_images = PostImage.post_images_search(params[:search])
+    elsif params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      @post_images = @tag.post_images
+    else
+      @post_images = PostImage.all
+    end
   end
 
   def edit

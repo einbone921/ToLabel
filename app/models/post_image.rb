@@ -1,6 +1,7 @@
 class PostImage < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
+  
 
   #------------いいね機能の実装処理--------------
   has_many :favorites, dependent: :destroy
@@ -10,7 +11,9 @@ class PostImage < ApplicationRecord
   end
   #--------------------END------------------------
 
+
   #----------------タグ機能の実装処理---------------------------------
+  
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
@@ -34,6 +37,10 @@ class PostImage < ApplicationRecord
   end
 
   #---------------------------END----------------------------------
+
+  def self.post_images_search(search)
+    PostImage.where(['caption LIKE ?', "%#{search}%", "%#{search}"])
+  end
 
   validates :post_image, presence: true
   validates :caption, presence: true
