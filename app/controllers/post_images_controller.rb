@@ -9,9 +9,9 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
     if @post_image.save
-      #tag_paramsで受け取った文字列を空白区切りで配列化する
+      # tag_paramsで受け取った文字列を空白区切りで配列化する
       tag_list = tag_params[:tag_names].split(/[[:blank:]]+/).select(&:present?)
-      #post_image.rb内にsave_tagメソッドを定義
+      # post_image.rb内にsave_tagメソッドを定義
       @post_image.save_tags(tag_list)
       redirect_to post_image_path(@post_image)
     else
@@ -30,7 +30,7 @@ class PostImagesController < ApplicationController
 
   def edit
     @post_image = PostImage.find(params[:id])
-    #ログインユーザがURLより他のユーザーの投稿編集画面に遷移した際に実行
+    # ログインユーザがURLより他のユーザーの投稿編集画面に遷移した際に実行
     if @post_image.user != current_user
       redirect_to root_path
     end

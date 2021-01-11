@@ -14,15 +14,15 @@ class PostImage < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
-  #postsコントローラで配列化した値を引数で受け取る
+  # postsコントローラで配列化した値を引数で受け取る
   def save_tags(tag_list)
     tag_list.each do |tag|
-      #受け取った値がDBに存在しない場合 ＝ find_tagにnilが代入 → 処理を実行
+      # 受け取った値がDBに存在しない場合 ＝ find_tagにnilが代入 → 処理を実行
       unless find_tag = Tag.find_by(tag_name: tag.downcase)
         begin
-          #createメソッドでタグの作成 & "!"で例外処理
+          # createメソッドでタグの作成 & "!"で例外処理
           self.tags.create!(tag_name: tag)
-          #例外が発生するとrescueが実行 → 値がnilになり、保存されずに次の処理へ
+          # 例外が発生するとrescueが実行 → 値がnilになり、保存されずに次の処理へ
         rescue
           nil
         end
