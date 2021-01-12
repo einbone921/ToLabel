@@ -5,11 +5,13 @@
   </div>
   <div>
     <% @tags.each do |tag| %>
-      <span>
-        <%= link_to post_images_path(tag_id: tag.id) do %> #
-          <%= tag.tag_name %>
-        <% end %>
-      </span>
+      <% if tag.post_images.present? %>
+        <span>
+          <%= link_to post_images_path(tag_id: tag.id) do %>
+            # <%= tag.tag_name %>
+          <% end %>
+        </span>
+      <% end %>
     <% end %>
   </div>
   <div class="row">
