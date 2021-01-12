@@ -30,6 +30,10 @@ class PostImage < ApplicationRecord
   end
   #---------------------------END----------------------------------
 
+  #-------------google mapsによる地図表示の実装--------------------
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+  #---------------------------END----------------------------------
   validates :post_image, presence: true
   validates :caption, presence: true
 

@@ -70,8 +70,46 @@
       <% end %>
     </div>
   <% end %>
-
-  <div class="row">
-    <h4>Google Maps</h4>
-  </div>
 </div>
+
+  <!--ここから-->
+    <script type="text/javascript">
+    function initMap() {
+      var test ={lat: <%= @post_image.latitude %>, lng: <%= @post_image.longitude %>};
+      var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: test
+                });
+      var transitLayer = new google.maps.TransitLayer();
+      transitLayer.setMap(map);
+
+      var contentString = '住所：<%= @post_image.address %>';
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+   #Map上の指定した位置にピンを挿して表示する
+      var marker = new google.maps.Marker({
+                    position:test,
+                    map: map,
+                    title: contentString
+                   });
+
+       marker.addListener('click', function() {
+         infowindow.open(map, marker);
+       });
+    }
+  </script>
+
+  <script async defer
+                src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAoSId7TbqlzNKFCLDuvrSfmVBJe4gbJas&callback=initMap">
+  </script>
+
+  <style type="text/css">
+    #map { height: 200px;
+           width: 70%;}
+  </style>
+
+  <div id="map"></div>
+  <!--ここまで-->
+
