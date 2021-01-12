@@ -1,0 +1,37 @@
+<div class="container">
+  <%= form_with model: @post_image, local:true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <div class="row">
+    <div class="col-md-6">
+      <div>
+        <%= attachment_image_tag @post_image, :post_image, size:"500x500" %>
+        <%= f.attachment_field :post_image %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div>
+        <%= f.label :"説明" %>
+        <%= f.text_field :caption, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :name, "タグ" %>
+        <%= f.text_field :tag_names, value: @tag_list %>
+      </div>
+
+      <div class="field">
+        <h6>エリア</h6>
+      </div>
+
+      <div class="field">
+        <h6>アドレス</h6>
+      </div>
+
+      <div class="field">
+        <%= f.submit "Edit" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
