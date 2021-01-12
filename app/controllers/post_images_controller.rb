@@ -26,7 +26,7 @@ class PostImagesController < ApplicationController
 
   def index
     if params[:tag_id]
-      @tag = Tag.find_by(params[:tag_id])
+      @tag = Tag.find(params[:tag_id])
       @post_images = @tag.post_images
     else
       @post_images = PostImage.all.order(created_at: :desc)
