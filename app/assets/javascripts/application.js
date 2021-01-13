@@ -17,3 +17,35 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(function(){
+  $('.header__icon').on('click',function(){
+    $('.sidebar').css(
+      'display', 'block'
+    ).animate({
+      left:'0'
+      },
+      300
+      );
+    $('.sidebar-bg').css(
+      'display', 'block'
+      ).animate({
+        opacity: '0.5'
+      },
+      300
+      );
+    $('.sidebar__icon').on('click', function(){
+      $('.sidebar').animate({
+        left:'-200px'
+      },
+        300
+      );
+      setTimeout(function(){
+        $('.sidebar').css('display', 'none');
+        $('.sidebar-bg').css('display', 'none');
+      },
+        300
+      );
+    });
+  });
+});
