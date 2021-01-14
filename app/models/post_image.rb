@@ -30,6 +30,9 @@ class PostImage < ApplicationRecord
   end
   #---------------------------END----------------------------------
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   validates :post_image, presence: true
   validates :caption, presence: true
 
