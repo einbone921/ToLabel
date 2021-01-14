@@ -14,10 +14,16 @@
  *= require_self
  */
 @import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 * {
   margin: 0;
   padding: 0;
+}
+.header__icon {
+  color: #000;
+  font-size: 40px;
 }
 .sidebar {
   padding: 16px;
@@ -38,6 +44,10 @@
 }
 .sidebar__ttl {
   color: #fff;
+}
+.sidebar__icon {
+  color: #fff;
+  font-size: 30px;
 }
 .sidebar-txt {
   font-size: 18px;
