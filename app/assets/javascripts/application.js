@@ -18,7 +18,8 @@
 //= require turbolinks
 //= require_tree .
 
-jQuery(document).ready(function(){
+document.addEventListener("turbolinks:load"
+,function(){
   $('.header__icon').on('click',function(){
     $('.sidebar').css(
       'display', 'block'

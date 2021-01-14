@@ -9,6 +9,6 @@ class Tag < ApplicationRecord
   private
 
   def downcase_tag_name
-    self.tag_name.downcase!
+    tag_name.downcase!
   end
 end
