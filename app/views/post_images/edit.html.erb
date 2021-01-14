@@ -30,7 +30,11 @@
 
       <div class="field">
         <%= f.submit "Edit" %>
+        <%= link_to post_image_path(@post_image), method: :delete do %>
+          <i class="fas fa-trash-alt">delete</i>
+        <% end %>
       </div>
+
     </div>
   </div>
   <% end %>
