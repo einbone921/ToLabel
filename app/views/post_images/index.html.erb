@@ -1,9 +1,12 @@
 <div class="container">
   <h2>Logo</h2>
-  <div class="row">
-    <h4>検索フォーム</h4>
-  </div>
-  <div class="row">
+  <dl class="search-box">
+    <%= search_form_for @q, url: root_path do |f| %>
+      <dt><%= f.text_field :caption_or_address_cont ,placeholder: '検索するテキストを入力' %></dt>
+      <dd><%= f.submit "検索", class: 'search-btn' %></dd>
+    <% end %>
+  </dl>
+  <div>
     <% @post_images.each do |post| %>
       <div>
         <%= link_to post_image_path(post) do %>

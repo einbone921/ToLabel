@@ -25,18 +25,23 @@ class PostImagesController < ApplicationController
   end
 
   def index
+    # タグ検索の場合
     if params[:tag_id]
       @tag = Tag.find(params[:tag_id])
       @post_images = @tag.post_images
+    # 新着順の表示
     else
       @post_images = PostImage.all.order(created_at: :desc)
     end
   end
 
+
   def edit
     @post_image = PostImage.find(params[:id])
-    @tag_list = @post_image.tags.pluck(:tag_name).join(" ") # @post_imageに結びついたタグを取得し、空白区切りで表示
-    if @post_image.user != current_user # ログインユーザがURLより他のユーザーの投稿編集画面に遷移した際に実行
+    # @post_imageに結びついたタグを取得し、空白区切りで表示
+    @tag_list = @post_image.tags.pluck(:tag_name).join(" ")
+    # ログインユーザがURLより他のユーザーの投稿編集画面に遷移した際に実行
+    if @post_image.user != current_user
       redirect_to root_path
     end
   end
