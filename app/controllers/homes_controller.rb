@@ -3,6 +3,7 @@ class HomesController < ApplicationController
 
   def top
     @tags = Tag.all
+    # ワード検索の場合
     if @q = PostImage.ransack(params[:q])
       @post_images = @q.result
     else
@@ -12,5 +13,4 @@ class HomesController < ApplicationController
 
   def about
   end
-
 end
