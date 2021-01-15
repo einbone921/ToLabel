@@ -29,12 +29,13 @@ class PostImagesController < ApplicationController
     if params[:tag_id]
       @tag = Tag.find(params[:tag_id])
       @post_images = @tag.post_images
-    # 新着順の表示
+    # ワード検索の場合
+    elsif @q = PostImage.ransack(params[:q])
+      @post_images = @q.result
     else
-      @post_images = PostImage.all.order(created_at: :desc)
+      @post_images = PostImage.all
     end
   end
-
 
   def edit
     @post_image = PostImage.find(params[:id])

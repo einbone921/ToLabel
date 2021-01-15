@@ -3,14 +3,15 @@ class HomesController < ApplicationController
 
   def top
     @tags = Tag.all
-    # ワード検索の場合
-    if @q = PostImage.ransack(params[:q])
-      @post_images = @q.result
-    else
-      @post_images = PostImage.all
-    end
+    @post_images = PostImage.all
   end
 
   def about
   end
+
+
+  def new_posts
+    @post_images = PostImage.all.order(created_at: :desc)
+  end
+
 end

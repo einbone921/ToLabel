@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get '/about' => 'homes#about'
+  get '/new_posts' => 'homes#new_posts'
 
   # userにネスト
   resources :users, only: [:show, :edit, :update] do
