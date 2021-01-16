@@ -22,7 +22,7 @@ class User < ApplicationRecord
     passive_relationships.find_by(following_id: user.id).present?
   end
 
-  #ゲストログインの際のユーザーデータ作成
+  # ゲストログインの際のユーザーデータ作成
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
