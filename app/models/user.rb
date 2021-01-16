@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :post_images, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_posts, through: :favorites, source: :post
 
   # フォローする側からみた関係
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
