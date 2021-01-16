@@ -9,9 +9,7 @@ class HomesController < ApplicationController
   def about
   end
 
-
   def new_posts
     @post_images = PostImage.all.order(created_at: :desc)
   end
-
 end
