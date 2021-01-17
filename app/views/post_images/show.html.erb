@@ -17,6 +17,14 @@
       </div>
 
       <p>説明: <%= @post_image.caption %></p>
+      <% if @post_image.user == current_user %>
+        <% if @post_image.is_active == true %>
+          <p>ステータス：有効</p>
+        <% else %>
+          <p>ステータス：無効</p>
+        <% end %>
+      <% end %>
+
     </div>
   </div>
 

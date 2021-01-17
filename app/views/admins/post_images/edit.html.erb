@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with model: @post_image, local:true do |f| %>
+  <%= form_with model: @post_image, url: admins_post_image_path(@post_image), local:true do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
   <div class="row">
     <div class="col-md-6">

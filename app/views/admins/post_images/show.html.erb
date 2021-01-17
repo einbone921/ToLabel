@@ -13,7 +13,12 @@
         <%= render 'favorites/favorite-btn', post_image: @post_image %>
       </div>
 
-      <p>説明: <%= @post_image.caption %></p>
+      <p>説明：<%= @post_image.caption %></p>
+    <% if @post_image.is_active == true %>
+      <p>ステータス：有効</p>
+    <% else %>
+      <p>ステータス：無効</p>
+    <% end %>
     </div>
   </div>
 
