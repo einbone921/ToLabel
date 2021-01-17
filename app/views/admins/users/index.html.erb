@@ -1,0 +1,9 @@
+<h2>ユーザー一覧</h2>
+<div>
+  <% @users.each do |user| %>
+    <%= link_to admins_user_path(user)  do %>
+      <p><%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></p>
+    <% end %>
+      <p><%= user.name %></p>
+  <% end %>
+</div>

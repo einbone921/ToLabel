@@ -1,0 +1,24 @@
+<div class="container">
+  <%= form_with model: @post_image, local:true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <div class="row">
+    <div class="col-md-6">
+      <div>
+        <%= attachment_image_tag @post_image, :post_image, size:"500x500" %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <p><%= @post_image.caption %></p>
+    <div>
+    <% @post_image.tags.each do |tag| %>
+      <span>
+        # <%= tag.tag_name %>
+      </span>
+    <% end %>
+    </div>
+      <p><%= @post_image.address %></p>
+    </div>
+  </div>
+  <% end %>
+</div>
