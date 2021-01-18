@@ -29,5 +29,10 @@ class User < ApplicationRecord
     end
   end
 
+  # 退会済みのユーザーでないか否かの確認
+  def active_for_authentication?
+    super && (self.delete_flag == false)
+  end
+
   attachment :profile_image
 end

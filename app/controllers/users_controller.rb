@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # before_action :check_guest, only: :hide
+
   def show
     @user = User.find(params[:id])
     @post_images = @user.post_images
@@ -26,6 +28,20 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     @users = user.followers
   end
+
+  def hide
+    @user = User.find(params[:id])
+    @user.update(delete_flag: true)
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
+
+  # def check_guest
+  #   if resource.email == 'guest@example.com'
+  #     redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
+  #   end
+  # end
 
   private
 
