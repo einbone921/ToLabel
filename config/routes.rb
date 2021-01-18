@@ -3,8 +3,14 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
   }
+  devise_scope :user do
+    post 'users/guest_sign_in' => 'users/sessions#new_guest'
+  end
+
   root to: 'homes#top'
   get '/about' => 'homes#about'
+  get '/new_posts' => 'homes#new_posts'
+  get '/popular' => 'homes#popular'
 
   # userにネスト
   resources :users, only: [:show, :edit, :update] do
