@@ -6,6 +6,17 @@
       <dd><%= f.submit "検索", class: 'search-btn' %></dd>
     <% end %>
   </dl>
+  <div>
+    <% @tags.each do |tag| %>
+      <% if tag.post_images.present? %>
+        <span>
+          <%= link_to post_images_path(tag_id: tag.id) do %>
+            # <%= tag.tag_name %>
+          <% end %>
+        </span>
+      <% end %>
+    <% end %>
+  </div>
   <div class="row">
     <% @post_images.each do |post| %>
       <% if post.is_active == true %>

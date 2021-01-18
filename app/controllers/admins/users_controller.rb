@@ -23,6 +23,7 @@ class Admins::UsersController < ApplicationController
     params.require(:user).permit(:delete_flag)
   end
 
+  # 対象レコードの特定し変数に代入（before_actionで指定のメソッドの実行の際に使用）
   def set_user
     @user = User.find(params[:id])
   end

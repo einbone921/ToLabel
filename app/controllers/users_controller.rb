@@ -1,36 +1,31 @@
 class UsersController < ApplicationController
   # before_action :check_guest, only: :hide
+  before_action :set_user
 
   def show
-    @user = User.find(params[:id])
     @post_images = @user.post_images
   end
 
   def edit
-    @user = User.find(params[:id])
     if @user != current_user
       redirect_to root_path
     end
   end
 
   def update
-    @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
 
   def follows
-    user = User.find(params[:id])
-    @users = user.followings
+    @users = @user.followings
   end
 
   def followers
-    user = User.find(params[:id])
-    @users = user.followers
+    @users = @user.followers
   end
 
   def hide
-    @user = User.find(params[:id])
     @user.update(delete_flag: true)
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
@@ -47,5 +42,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :introduction, :email, :profile_image)
+  end
+
+  # 対象レコードの特定し変数に代入（before_actionで指定のメソッドの実行の際に使用）
+  def set_user
+    @user = User.find(params[:id])
   end
 end
