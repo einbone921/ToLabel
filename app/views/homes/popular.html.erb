@@ -5,11 +5,13 @@
   <div>
     <% @post_images.each do |post| %>
       <% if post.is_active == true %>
-      <div>
-        <%= link_to post_image_path(post) do %>
-          <%= attachment_image_tag post, :post_image, size:"200x200" %>
-        <% end %>
-      </div>
+        <div class="card-item mx-auto mt-4 shadow-lg">
+          <div class="card mx-auto">
+            <%= link_to post_image_path(post) do %>
+              <%= attachment_image_tag post, :post_image, size:"600x600" %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     <% end %>
   </div>
