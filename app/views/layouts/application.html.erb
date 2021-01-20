@@ -13,11 +13,15 @@
       <nav class="navbar bg-light">
         <div class="container">
           <i class="fas fa-bars header__icon"></i>
-          <ul class="navbar ml-auto">
-            <li><%= link_to "Logo", root_path %></li>
-            <li><%= link_to "人気", popular_path %></li>
-            <li><%= link_to "新着", new_posts_path %></li>
-          </ul>
+          <% if admin_signed_in? %>
+            <li>Logo</li>
+          <% else %>
+            <ul class="navbar ml-auto">
+              <li><%= link_to "Logo", root_path %></li>
+              <li><%= link_to "人気", popular_path %></li>
+              <li><%= link_to "新着", new_posts_path %></li>
+            </ul>
+          <% end %>
         </div>
       </nav>
     </header>
@@ -32,6 +36,10 @@
         <li class="sidebar-txt"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         <li class="sidebar-txt"><%= link_to "新規投稿", new_post_image_path %></li>
         <li class="sidebar-txt"><%= link_to "マイページ", user_path(current_user.id) %></li>
+      <% elsif admin_signed_in? %>
+        <li class="sidebar-txt"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+        <li class="sidebar-txt"><%= link_to "ユーザー一覧", admins_users_path %></li>
+        <li class="sidebar-txt"><%= link_to "投稿一覧", admins_post_images_path %></li>
       <% else %>
         <li class="sidebar-txt"><%= link_to "新規登録", new_user_registration_path %></li>
         <li class="sidebar-txt"><%= link_to "ログイン", new_user_session_path %></li>
