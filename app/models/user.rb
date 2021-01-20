@@ -35,4 +35,6 @@ class User < ApplicationRecord
   end
 
   attachment :profile_image
+
+  validates :email, presence: true
 end
