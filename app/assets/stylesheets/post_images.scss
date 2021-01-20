@@ -7,21 +7,29 @@
 }
 
 .icon-list {
+  text-align: right;
   font-size: 25px;
 }
 
 .profile-image {
     margin: 0 auto;
     width: 100px;
-    position: relative;
 }
 
-.follow-btn {
-    text-align: right;
-    font-size: 25px;
-    position: absolute;
-    top: 75px;
-    right: 0;
+.user-profile {
+    text-align: center;
+}
+
+.user-name h5 {
+   display: inline;
+}
+
+.caption {
+    text-align: center;
+}
+
+.status {
+    text-align: center;
 }
 
 .tag-list {

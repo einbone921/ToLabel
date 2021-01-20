@@ -1,7 +1,11 @@
 <div class="container">
-  <h2>Logo</h2>
-  <%= render "layouts/search", q: @q %>
-  <%= render "layouts/tags", tags: @tags %>
+  <h1 class="logo">Logo</h1>
+  <div class="row">
+    <%= render "layouts/search", q: @q %>
+  </div>
+  <div class="row">
+    <%= render "layouts/tags", tags: @tags %>
+  </div>
   <div>
     <% @post_images.each do |post| %>
       <% if post.is_active == true %>
