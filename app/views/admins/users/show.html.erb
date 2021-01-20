@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row"></div>
+  <div class="row">
+    <div class="col-md-3">
+      <p><%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></p>
+      <p><%= @user.name %>
+      <% if @user == current_user %>
+        <span><%= link_to "編集", edit_user_path %></span>
+      <% end %>
+      </p>
+    </div>
+  </div>
+  <div id="follow-btn">
+    <% if @user == current_user %>
+    <div class="row">
+      <div class="col-md-6">
+        <p><%= link_to "follower", followers_user_path(@user.id) %></p>
+      </div>
+      <div class="col-md-6">
+        <p><%= link_to "following", follows_user_path(@user.id) %></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <h6>説明文</h6>
+  <div class="row">
+    <div class="col-md-10 border">
+      <%= @user.introduction %>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @post_images.each do |post| %>
+      <div>
+        <%= link_to admins_post_image_path(post) do %>
+          <%= attachment_image_tag post, :post_image, size:"200x200" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
