@@ -1,15 +1,21 @@
 <div class="container">
-  <h2>Logo</h2>
-  <%= render "layouts/search", q: @q %>
-  <%= render "layouts/tags", tags: @tags %>
+  <h1 class="logo">Logo</h1>
+  <div class="row">
+    <%= render "layouts/search", q: @q %>
+  </div>
+  <div class="row">
+    <%= render "layouts/tags", tags: @tags %>
+  </div>
   <div>
     <% @post_images.each do |post| %>
       <% if post.is_active == true %>
-      <div>
-        <%= link_to post_image_path(post) do %>
-          <%= attachment_image_tag post, :post_image, size:"200x200" %>
-        <% end %>
-      </div>
+        <div class="card-item mx-auto mt-4 shadow-lg">
+          <div class="card mx-auto">
+            <%= link_to post_image_path(post) do %>
+              <%= attachment_image_tag post, :post_image, size:"600x600" %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     <% end %>
   </div>

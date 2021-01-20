@@ -1,3 +1,46 @@
 // Place all the styles related to the PostImages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card-item {
+    width: 600px;
+}
+
+.icon-list {
+  text-align: right;
+  font-size: 25px;
+}
+
+.profile-image {
+    margin: 0 auto;
+    width: 100px;
+}
+
+.user-profile {
+    text-align: center;
+}
+
+.user-name h5 {
+   display: inline;
+}
+
+.caption {
+    text-align: center;
+}
+
+.status {
+    text-align: center;
+}
+
+.tag-list {
+    text-align: center;
+}
+
+.comment {
+    text-align: right;
+}
+
+.comment-form {
+    text-align: right;
+    margin-top: 20px;
+}

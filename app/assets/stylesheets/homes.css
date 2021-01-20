@@ -1,0 +1,25 @@
+.card-item {
+  width: 600px; }
+
+.icon-item {
+  display: inline-block; }
+
+.profile-image {
+  margin: 0 auto;
+  width: 100px; }
+
+.profile-image #follow-btn {
+  text-align: right;
+  font-size: 25px; }
+
+.tag-list {
+  text-align: center; }
+
+.comment {
+  text-align: right; }
+
+.comment-form {
+  text-align: right;
+  margin-top: 20px; }
+
+/*# sourceMappingURL=homes.css.map */
