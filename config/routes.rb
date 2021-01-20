@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get :follows, on: :member
     get :followers, on: :member
+    put :hide, on: :member
   end
 
   # post_imageにネスト
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-    resources :users, only: [:index, :show, :edit, :update, :destroy]
-    resources :post_images, only: [:index, :show, :edit, :update, :destroy]
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :post_images, only: [:index, :show, :edit, :update]
   end
 end

@@ -25,6 +25,8 @@
         </div>
       </nav>
     </header>
+    <%= flash[:notice] %>
+    <%= flash[:error] %>
     <%= yield %>
     <aside class="sidebar">
       <div class="sidebar__inner">

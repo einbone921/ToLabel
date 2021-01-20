@@ -1,0 +1,6 @@
+<dl class="search-box">
+  <%= search_form_for q, url: post_images_path do |f| %>
+    <dt><%= f.text_field :caption_or_address_cont ,placeholder: '検索するテキストを入力' %></dt>
+    <dd><%= f.submit "検索", class: 'search-btn' %></dd>
+  <% end %>
+</dl>
