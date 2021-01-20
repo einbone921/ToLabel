@@ -68,3 +68,31 @@
   z-index: 3;
   display: none;
 }
+
+.logo {
+  text-align: center;
+}
+
+.tags {
+  margin: 30px;
+}
+
+.tags > span {
+  padding: 10px;
+}
+
+.search-form {
+  margin: 20px auto;
+  font-size: 25px;
+}
+
+.search-box {
+  width: 300px;
+}
+
+.search-btn {
+}
+
+.image-item {
+  margin: 10px;
+}

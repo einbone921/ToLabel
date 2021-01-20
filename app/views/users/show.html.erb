@@ -1,43 +1,42 @@
 <div class="container">
-  <div class="row"></div>
-  <div class="row">
-    <div class="col-md-3">
-      <p><%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></p>
-      <div id="follow-btn">
-        <% if user_signed_in? %>
-          <%= render 'relationships/follow-btn', user: @user %>
-        <% end %>
-      </div>
-      <p><%= @user.name %>
+  <div class="profile">
+    <div class="profile-image">
+      <p><%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class:"rounded-circle"; %></p>
+    </div>
+    <div class="user-name">
+      <h5><%= @user.name %></h5>
       <% if @user == current_user %>
-        <span><%= link_to "編集", edit_user_path %></span>
+        <h5>
+          <%= link_to edit_user_path, class:"text-dark" do %>
+            <i class="fas fa-user-cog"></i>
+          <% end %>
+        </h5>
+      <% else %>
+        <h5 id="follow-btn">
+          <% if user_signed_in? %>
+            <%= render 'relationships/follow-btn', user: @user %>
+          <% end %>
+        </h5>
       <% end %>
-      </p>
     </div>
-  </div>
-  <div id="follow-btn">
-    <% if @user == current_user %>
-    <div class="row">
-      <div class="col-md-6">
+    <div class="introduction">
+      <h5>Introduction</h5>
+      <p><%= @user.introduction %></p>
+    </div>
+    <div class="follows">
+      <% if @user == current_user %>
         <p><%= link_to "follower", followers_user_path(@user.id) %></p>
-      </div>
-      <div class="col-md-6">
         <p><%= link_to "following", follows_user_path(@user.id) %></p>
-      </div>
-    </div>
-    <% end %>
-  </div>
-  <h6>説明文</h6>
-  <div class="row">
-    <div class="col-md-10 border">
-      <%= @user.introduction %>
+      <% end %>
     </div>
   </div>
+
+
 
   <h4>投稿一覧</h4>
   <div class="row">
     <% @post_images.each do |post| %>
-      <div>
+      <div class="image-item mt-4 shadow-lg">
         <%= link_to post_image_path(post) do %>
           <%= attachment_image_tag post, :post_image, size:"200x200" %>
         <% end %>
