@@ -1,42 +1,12 @@
 <div class="container">
-  <%= form_with model: @post_image, local:true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-  <div class="row">
-    <div class="col-md-6">
-      <div>
-        <%= attachment_image_tag @post_image, :post_image, size:"500x500" %>
-        <%= f.attachment_field :post_image %>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div>
-        <%= f.label :"説明" %>
-        <%= f.text_field :caption, autofocus: true %>
-      </div>
-
-      <div class="field">
-        <%= f.label :name, "タグ" %>
-        <%= f.text_field :tag_names, value: @tag_list %>
-      </div>
-
-      <div class="field">
-        <h6>エリア</h6>
-      </div>
-
-      <div class="field">
-        <%= f.label :Place %>
-        <%= f.text_area :address, autofocus: true %>
-      </div>
-
-      <div class="field">
-        <%= f.submit "Edit" %>
-        <%= link_to post_image_path(@post_image), method: :delete do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </div>
-
-    </div>
+  <div class="post-info">
+    <h3>Edit This Post</h3>
   </div>
-  <% end %>
+  <%= render "post_images/form", post_image: @post_image, tag_list: @tag_list %>
+  <div class="delete-post">
+    <h3>Or Delete This Post</h3>
+    <%= link_to post_image_path(@post_image), method: :delete, "data-confirm" => "本当に削除しますか？", class:"text-dark" do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </div>
 </div>

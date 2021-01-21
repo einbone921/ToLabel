@@ -1,0 +1,31 @@
+<%= form_with model: post_image, local:true do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
+<div class="row">
+  <div class="col-md-6">
+    <div class="field">
+      <%= attachment_image_tag post_image, :post_image, fallback: "no_image.jpg", size:"400x400" %>
+      <%= f.attachment_field :post_image %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <table class="form-field">
+      <tr>
+        <th><%= f.label :"Caption" %></th>
+        <th><%= f.text_field :caption, autofocus: true %></th>
+      </tr>
+      <tr>
+        <th><%= f.label :name, "Label" %></th>
+        <th><%= f.text_field :tag_names, value: tag_list %></th>
+      </tr>
+      <tr>
+        <th><%= f.label :Place %></th>
+        <th><%= f.text_area :address, autofocus: true %></th>
+      </tr>
+    </table>
+    <div class="submit-btn">
+      <p><%= f.submit "Upload" %></p>
+    </div>
+  </div>
+</div>
+<% end %>
