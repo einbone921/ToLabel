@@ -1,9 +1,22 @@
-<h2>ユーザー一覧</h2>
-<div>
+<div class="profile">
+  <h1 class="text-center">Users</h1>
   <% @users.each do |user| %>
-    <%= link_to admins_user_path(user)  do %>
-      <p><%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></p>
-    <% end %>
-      <p><%= user.name %></p>
+  <div class="user-list">
+    <div class="prof-image">
+      <p>
+        <%= link_to admins_user_path(user)  do %>
+          <%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "150x150", class:"rounded-circle"; %>
+        <% end %>
+      </p>
+    </div>
+    <div class="prof-info">
+      <p><%= user.name %>：</p>
+      <% if user.delete_flag == true %>
+      <p>退会済み</p>
+      <% else %>
+      <p>有効会員</p>
+      <% end %>
+    </div>
+  </div>
   <% end %>
 </div>
