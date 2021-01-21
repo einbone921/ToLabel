@@ -1,0 +1,11 @@
+  <div class="tags">
+    <% tags.each do |tag| %>
+      <% if tag.post_images.present? %>
+        <span>
+          <%= link_to post_images_path(tag_id: tag.id), class:"text-dark m-10" do %>
+            <i class="fas fa-tag"></i> <%= tag.tag_name %>
+          <% end %>
+        </span>
+      <% end %>
+    <% end %>
+  </div>

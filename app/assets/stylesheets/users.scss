@@ -1,3 +1,86 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.profile {
+  margin-top: 50px;
+}
+
+.profile-image {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.user-name {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.user-name h5 {
+  display: inline;
+}
+
+
+.introduction {
+  width: 100%;
+  margin: 10px auto;
+  text-align: center;
+}
+
+
+.relationships {
+  text-align: center;
+
+}
+
+.relationships h5 {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.edit-prof {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.field {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.form-field {
+  width: 400px;
+  margin-top : 130px;
+}
+
+.form-field th {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.submit-btn {
+  margin: 20px auto;
+}
+.submit-btn p {
+  display: inline;
+  margin-left: 150px;
+}
+
+.withdraw {
+  text-align: center;
+}
+
+.withdraw i {
+  font-size: 40px;
+}
+
+.user-list {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.prof-info p {
+  display: inline;
+  font-size: 20px;
+}

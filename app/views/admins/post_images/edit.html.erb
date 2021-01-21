@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="post-info">
+    <h3>Edit This Post's Status</h3>
+  </div>
+  <%= form_with model: @post_image, url: admins_post_image_path(@post_image), local:true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="field">
+        <%= attachment_image_tag @post_image, :post_image, size:"400x400" %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <table class="form-field">
+        <tr>
+          <th>Caption：<%= @post_image.caption %></th>
+        </tr>
+        <tr>
+          <th>
+            <p>Tags：
+              <% @post_image.tags.each do |tag| %>
+                <span>
+                  # <%= tag.tag_name %>
+                </span>
+              <% end %>
+            </p>
+          </th>
+        <tr>
+          <th>Place：<%= @post_image.address %></th>
+        </tr>
+        <tr>
+          <th>
+            <div>
+              <%= f.radio_button :is_active, true %>
+              <%= f.label :is_active, "有効" %>
+              <%= f.radio_button :is_active, :false %>
+              <%= f.label :is_active, "無効" %>
+            </div>
+          </th>
+        </tr>
+      </table>
+      <%= f.submit "Update", class: 'btn btn-primary' %>
+    </div>
+  </div>
+  <% end %>
+</div>

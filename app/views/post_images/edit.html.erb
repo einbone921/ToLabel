@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="post-info">
+    <h3>Edit This Post</h3>
+  </div>
+  <%= render "post_images/form", post_image: @post_image, tag_list: @tag_list %>
+  <div class="delete-post">
+    <h3>Or Delete This Post</h3>
+    <%= link_to post_image_path(@post_image), method: :delete, "data-confirm" => "本当に削除しますか？", class:"text-dark" do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </div>
+</div>

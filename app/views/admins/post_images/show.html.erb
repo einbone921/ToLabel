@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="post-image">
+    <p class="card-item mx-auto mt-4 shadow-lg"><%= attachment_image_tag @post_image, :post_image, size:"600x600" %></p>
+  </div>
+  <div class="user-profile">
+    <div class="profile-image">
+      <p>
+        <%= link_to admins_user_path(@post_image.user) do %>
+          <%= attachment_image_tag @post_image.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class:"rounded-circle"; %>
+        <% end %>
+      </p>
+      <p><%= @post_image.user.name %></p>
+    </div>
+    <h5>
+      <%= link_to edit_admins_post_image_path, class:"text-dark" do %>
+        Edit This Post's Status <i class="fas fa-edit"></i>
+      <% end %>
+    </h5>
+  </div>
+
+  <div class="caption">
+    <p><%= @post_image.caption %></p>
+  </div>
+
+  <div class="status">
+    <% if @post_image.is_active == true %>
+      <p>ステータス：有効</p>
+    <% else %>
+      <p>ステータス：無効</p>
+    <% end %>
+  </div>
+
+  <div class="tags text-center">
+    <%= render "layouts/tags", tags: @post_image.tags %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7"></div>
+    <div class="col-md-5">
+      <div class="comment">
+        <p>コメント<i class="far fa-comment-alt"></i>：<%= @post_image.post_comments.count %></p>
+        <% @post_image.post_comments.each do |post_comment| %>
+          <p>
+            <%= link_to user_path(post_comment.user) do %>
+              <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle"; %>
+            <% end %>
+            <span><%= post_comment.user.name %></span>
+            <span><%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %></span>
+          </p>
+          <%= link_to "Delete This Comment", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</di>
+
+  <% if @post_image.address.present? %>
+    <div class="row">
+      <div id="map"></div>
+    </div>
+  <% end %>
+
+  <script type="text/javascript">
+  function initMap() {
+    var test ={lat: <%= @post_image.latitude %>, lng: <%= @post_image.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: test
+              });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    var contentString = '住所：<%= @post_image.address %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    var marker = new google.maps.Marker({
+                  position:test,
+                  map: map,
+                  title: contentString
+                 });
+
+     marker.addListener('click', function() {
+       infowindow.open(map, marker);
+     });
+  }
+  </script>
+
+  <script async defer
+                src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap">
+  </script>
+
+  <style type="text/css">
+    #map { height: 500px;
+           width: 100%;}
+  </style>

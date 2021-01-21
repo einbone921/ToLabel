@@ -1,8 +1,20 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_search
 
-  def after_sign_in_path_for(resource) # ログイン後にログインユーザーのページへ遷移
-    user_path(resource)
+  # ログイン後にログインユーザーのページへ遷移
+  def after_sign_in_path_for(resource)
+    if user_signed_in?
+      root_path
+    else
+      admins_post_images_path
+    end
+  end
+
+  # 検索フォームの全画面対応
+  def set_search
+    @q = PostImage.ransack(params[:q])
+    @post_images = @q.result
   end
 
   private

@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="post-image">
+    <p class="card-item mx-auto mt-4 shadow-lg"><%= attachment_image_tag @post_image, :post_image, size:"600x600" %></p>
+  </div>
+  <div class="icon">
+    <ul class="icon-list">
+      <li class="icon-item" id="favorite-btn">
+        <%= render 'favorites/favorite-btn', post_image: @post_image %>
+      </li>
+      <li class="icon-item">
+        <p><%= @post_image.post_comments.count %><i class="far fa-comment-alt"></i></p>
+      </li>
+    </ul>
+  </div>
+  <div class="user-profile">
+    <% if @post_image.user == current_user %>
+      <h5>
+        <%= link_to edit_post_image_path, class:"text-dark" do %>
+          Edit This Post <i class="fas fa-edit"></i>
+        <% end %>
+      </h5>
+    <% else %>
+      <div class="profile-image">
+        <p>
+          <%= link_to user_path(@post_image.user) do %>
+            <%= attachment_image_tag @post_image.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class:"rounded-circle"; %>
+          <% end %>
+        </p>
+      </div>
+      <div class="user-name">
+        <h5><%= @post_image.user.name %></h5>
+        <h5 id="follow-btn_<%= @post_image.user.id %>">
+          <% if user_signed_in? %>
+            <%= render 'relationships/follow-btn', user: @post_image.user %>
+          <% end %>
+        </h5>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="caption mt-5">
+    <p><%= @post_image.caption %></p>
+  </div>
+
+  <% if @post_image.user == current_user %>
+  <div class="status">
+    <% if @post_image.is_active == true %>
+      <p>ステータス：有効</p>
+    <% else %>
+      <p>ステータス：無効</p>
+    <% end %>
+  </div>
+  <% end %>
+
+  <div class="tags text-center">
+    <%= render "layouts/tags", tags: @post_image.tags %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7"></div>
+    <div class="col-md-5">
+      <% if user_signed_in? %>
+        <div class="comment">
+          <p>コメント<i class="far fa-comment-alt"></i>：<%= @post_image.post_comments.count %></p>
+          <% @post_image.post_comments.each do |post_comment| %>
+            <p>
+              <%= link_to user_path(post_comment.user) do %>
+                <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", size: "50x50", class:"rounded-circle"; %>
+              <% end %>
+              <span><%= post_comment.user.name %></span>
+              <span><%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %></span>
+            </p>
+            <% if post_comment.user == current_user %>
+              <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="comment-form">
+          <%= form_with(model:[@post_image, @post_comment], local: true) do |f| %>
+            <p><%= f.text_area :comment, rows:'5', placeholder: "コメント", style:"width:100%"; %></p>
+            <p><%= f.submit "Create" %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if @post_image.address.present? %>
+  <div class="row">
+    <div id="map"></div>
+  </div>
+<% end %>
+
+  <script type="text/javascript">
+  function initMap() {
+    var test ={lat: <%= @post_image.latitude %>, lng: <%= @post_image.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: test
+              });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    var contentString = '住所：<%= @post_image.address %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    var marker = new google.maps.Marker({
+                  position:test,
+                  map: map,
+                  title: contentString
+                 });
+
+     marker.addListener('click', function() {
+       infowindow.open(map, marker);
+     });
+  }
+  </script>
+
+  <script async defer
+                src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap">
+  </script>
+
+  <style type="text/css">
+    #map { height: 500px;
+           width: 100%;}
+  </style>
+
+

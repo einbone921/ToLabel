@@ -1,0 +1,6 @@
+<div class="search-form">
+  <%= search_form_for q, url: post_images_path do |f| %>
+    <%= f.text_field :caption_or_address_cont ,placeholder: 'write word in here', class:"search-box" %>
+    <%= f.submit "search", class: 'search-btn' %>
+  <% end %>
+</div>

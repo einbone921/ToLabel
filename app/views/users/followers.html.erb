@@ -1,0 +1,22 @@
+<div class="profile">
+  <h1 class="text-center">followers</h1>
+  <% @users.each do |user| %>
+  <div class="user-list">
+    <div class="prof-image">
+      <p>
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg", size: "150x150", class:"rounded-circle"; %>
+        <% end %>
+      </p>
+    </div>
+    <div class="prof-info">
+      <p><%= user.name %></p>
+      <p id="follow-btn_<%= user.id %>">
+        <% if user_signed_in? %>
+          <%= render 'relationships/follow-btn', user: user %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+  <% end %>
+</div>

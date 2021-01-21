@@ -1,0 +1,15 @@
+  <% if user_signed_in? %>
+    <% if post_image.favorited_by?(current_user) %>
+      <p>
+        <%= link_to post_image_favorites_path(post_image), method: :delete, class:"text-dark", remote: true do %>
+          <%= post_image.favorites.count %><i class="fas fa-heart"></i>
+        <% end %>
+      </p>
+    <% else %>
+      <p>
+        <%= link_to post_image_favorites_path(post_image), method: :post, class:"text-dark", remote: true do %>
+          <%= post_image.favorites.count %><i class="far fa-heart"></i>
+        <% end %>
+      </p>
+    <% end %>
+  <% end %>

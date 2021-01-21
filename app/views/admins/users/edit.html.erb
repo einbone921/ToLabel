@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="edit-prof">
+    <h2>Edit This User's Status</h2>
+  </div>
+  <%= form_with model: @user, url: admins_user_path, local:true do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="field">
+		    <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size:"300x300", class:"rounded-circle"; %>
+		　</div>
+    </div>
+
+    <div class="col-md-6">
+      <table class="form-field">
+        <tr>
+          <th>Name：<%= @user.name %></th>
+        </tr>
+        <tr>
+          <th>Introduction：<%= @user.introduction %></th>
+        </tr>
+        <tr>
+          <th>
+            <div>
+              <%= f.radio_button :delete_flag, :false %>
+              <%= f.label :delete_flag, "有効会員" %>
+              <%= f.radio_button :delete_flag, true %>
+              <%= f.label :delete_flag, "退会済み" %>
+            </div>
+          </th>
+        </tr>
+      </table>
+      <div class="actions">
+        <%= f.submit "Update" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
