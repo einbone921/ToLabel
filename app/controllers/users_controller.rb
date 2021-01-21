@@ -13,8 +13,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render "edit"
+    end
   end
 
   def follows
@@ -28,7 +31,7 @@ class UsersController < ApplicationController
   def hide
     @user.update(delete_flag: true)
     reset_session
-    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    flash.now[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
 

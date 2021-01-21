@@ -34,7 +34,9 @@ class User < ApplicationRecord
     super && (self.delete_flag == false)
   end
 
-  attachment :profile_image
+  validates :name, presence: true, length: { in: 2..20 }
+  validates :email, presence: true, uniqueness: true
+  validates :introduction, length: { maximum: 50 }
 
-  validates :email, presence: true
+  attachment :profile_image
 end
