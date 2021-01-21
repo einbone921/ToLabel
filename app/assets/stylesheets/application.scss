@@ -25,6 +25,12 @@
   color: #000;
   font-size: 40px;
 }
+.navbar ul {
+  margin: auto;
+  width: 600px;
+  font-size: 30px;
+  list-style: none;
+}
 .sidebar {
   padding: 16px;
   width: 220px;
@@ -49,8 +55,11 @@
   color: #fff;
   font-size: 30px;
 }
+.sidebar-list {
+  list-style: none;
+}
 .sidebar-txt {
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 16px;
   margin-left: 20px;
 }
@@ -95,4 +104,12 @@
 
 .image-item {
   margin: 10px;
+}
+
+.session {
+  margin: 30px auto;
+}
+
+.registration {
+  margin: 30px auto;
 }
