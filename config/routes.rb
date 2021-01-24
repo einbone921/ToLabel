@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
   end
 
+  resources :inquiries, only: [:new, :create]
+
   namespace :admins do
     resources :users, only: [:index, :show, :edit, :update]
     resources :post_images, only: [:index, :show, :edit, :update]
