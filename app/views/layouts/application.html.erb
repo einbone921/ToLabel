@@ -17,8 +17,8 @@
             <li>Logo</li>
           <% else %>
             <ul class="navbar ml-auto">
-              <li><%= link_to "Logo", root_path, class:"text-dark" %></li>
               <li><%= link_to "Popular", popular_path, class:"text-dark" %></li>
+              <li><%= link_to "Logo", root_path, class:"text-dark" %></li>
               <li><%= link_to "New", new_posts_path, class:"text-dark" %></li>
             </ul>
           <% end %>
@@ -36,17 +36,18 @@
       </div>
       <ul class="sidebar-list">
       <% if user_signed_in? %>
-        <li class="sidebar-txt"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-        <li class="sidebar-txt"><%= link_to "新規投稿", new_post_image_path %></li>
-        <li class="sidebar-txt"><%= link_to "マイページ", user_path(current_user.id) %></li>
+        <li class="sidebar-txt"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+        <li class="sidebar-txt"><%= link_to "Create Post", new_post_image_path %></li>
+        <li class="sidebar-txt"><%= link_to "My Page", user_path(current_user.id) %></li>
+        <li class="sidebar-txt"><%= link_to "Contact Us", new_inquiry_path %></li>
       <% elsif admin_signed_in? %>
-        <li class="sidebar-txt"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-        <li class="sidebar-txt"><%= link_to "ユーザー一覧", admins_users_path %></li>
-        <li class="sidebar-txt"><%= link_to "投稿一覧", admins_post_images_path %></li>
+        <li class="sidebar-txt"><%= link_to "Log Out", destroy_admin_session_path, method: :delete %></li>
+        <li class="sidebar-txt"><%= link_to "Users", admins_users_path %></li>
+        <li class="sidebar-txt"><%= link_to "Posts", admins_post_images_path %></li>
       <% else %>
-        <li class="sidebar-txt"><%= link_to "新規登録", new_user_registration_path %></li>
-        <li class="sidebar-txt"><%= link_to "ログイン", new_user_session_path %></li>
-        <li class="sidebar-txt"><%= link_to "アバウト", about_path %></li>
+        <li class="sidebar-txt"><%= link_to "Sign Up", new_user_registration_path %></li>
+        <li class="sidebar-txt"><%= link_to "Log In", new_user_session_path %></li>
+        <li class="sidebar-txt"><%= link_to "About", about_path %></li>
       <% end %>
       </ul>
     </aside>
