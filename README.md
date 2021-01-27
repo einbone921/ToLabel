@@ -31,8 +31,7 @@
 
 * ER図  
 
-![ER_toLabel](https://user-images.githubusercontent.com/73771296/105982845-34827000-60db-11eb-8440-780413b62562.png)
-
+![ER_toLabel](https://user-images.githubusercontent.com/73771296/105993906-428bbd00-60ea-11eb-95f1-9f0547b10a75.png)
 
 * テーブル定義書
 
