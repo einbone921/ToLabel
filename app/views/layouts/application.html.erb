@@ -15,8 +15,8 @@
           <i class="fas fa-bars header-icon"></i>
           <% if admin_signed_in? %>
             <div class="nav-list mx-auto">
-              <%= link_to root_path do %>
-                <img src="/assets/Label.png">
+              <%= link_to admins_post_images_path do %>
+                <%= image_tag "Label.png" %>
               <% end %>
             </div>
           <% else %>
