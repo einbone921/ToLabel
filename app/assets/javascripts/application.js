@@ -20,7 +20,7 @@
 
 document.addEventListener("turbolinks:load"
 ,function(){
-  $('.header__icon').on('click',function(){
+  $('.header-icon').on('click',function(){
     $('.sidebar').css(
       'display', 'block'
     ).animate({
@@ -35,7 +35,7 @@ document.addEventListener("turbolinks:load"
       },
       300
       );
-    $('.sidebar__icon').on('click', function(){
+    $('.sidebar-icon').on('click', function(){
       $('.sidebar').animate({
         left:'-200px'
       },
