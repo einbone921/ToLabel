@@ -29,7 +29,8 @@
 
 ## 設計書
 
-* ER図
+* ER図  
+
 ![ER_toLabel](https://user-images.githubusercontent.com/73771296/105967521-4824db00-60c9-11eb-9db2-f0614863762f.png)
 
 * テーブル定義書
