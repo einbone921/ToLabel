@@ -1,0 +1,32 @@
+<header class="header">
+  <nav class="navbar bg-light">
+    <div class="container">
+      <i class="fas fa-bars header-icon"></i>
+      <% if admin_signed_in? %>
+        <div class="nav-list mx-auto">
+          <%= link_to root_path do %>
+            <img src="/assets/Label.png">
+          <% end %>
+        </div>
+      <% else %>
+        <ul class="navbar ml-auto">
+          <li class="nav-list">
+            <%= link_to new_posts_path do %>
+              <img src="/assets/new.png">
+            <% end %>
+          </li>
+          <li class="nav-list">
+            <%= link_to root_path do %>
+              <img src="/assets/Label.png">
+            <% end %>
+          </li>
+          <li class="nav-list">
+            <%= link_to popular_path do %>
+              <img src="/assets/popular.png">
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </nav>
+</header>
