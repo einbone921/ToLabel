@@ -3,10 +3,13 @@
 ## サイト概要
 写真の投稿機能を持ったSNSサイトです。
 具体的な機能
-・画像の投稿、および任意のタグ付けが可能
-・他者の投稿に対してコメントやいいねをつけることが出来る
-・気になったユーザーに対しフォローをつけたり、フォローの解除が出来る
-・検索フォームを用いてタグに関連した画像を表示
+・画像の投稿、および任意のタグ付けが可能  
+・他者の投稿に対してコメントやいいねをつけることが出来る  
+・気になったユーザーに対しフォローの付与、解除が出来る   
+・投稿に紐ついた住所の地図を表示
+・検索フォームを用いて入力した文字列に関連した画像を表示  
+・問い合わせフォームを用いてサイト管理者へのメール送信が可能
+・管理者はユーザー、および投稿のステータスの変更により表示、あるいは非表示にすることが可能
 
 ### サイトテーマ
 旅先で撮影した写真を投稿して共有し合うSNSサイトです。
@@ -41,9 +44,6 @@ https://docs.google.com/spreadsheets/d/1vwhLTPIWMRoYqPbVupnTFtQ9Jwgw_k9AEbS77pBb
 
 https://docs.google.com/spreadsheets/d/1qIxOESobN1h4LjA5aoTZRyrk3q8LZ0z05Fx11vqi1nE/edit?usp=sharing
 
-## 機能要素一覧
-
-https://docs.google.com/spreadsheets/d/1h-3z6XyLYxO2Lg3afL6AOYUjer-DqbXTPQu12sQ6jIc/edit?usp=sharing
 
 ## 開発環境
 
@@ -52,3 +52,8 @@ https://docs.google.com/spreadsheets/d/1h-3z6XyLYxO2Lg3afL6AOYUjer-DqbXTPQu12sQ6
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
 - IDE：Cloud9
+
+## 使用した素材の提供元
+
+https://unsplash.com/
+https://www.canva.com/
