@@ -9,64 +9,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header class="header">
-      <nav class="navbar bg-light">
-        <div class="container">
-          <i class="fas fa-bars header-icon"></i>
-          <% if admin_signed_in? %>
-            <div class="nav-list mx-auto">
-              <%= link_to root_path do %>
-                <img src="/assets/Label.png">
-              <% end %>
-            </div>
-          <% else %>
-            <ul class="navbar ml-auto">
-              <li class="nav-list">
-                <%= link_to new_posts_path do %>
-                  <img src="/assets/new.png">
-                <% end %>
-              </li>
-              <li class="nav-list">
-                <%= link_to root_path do %>
-                  <img src="/assets/Label.png">
-                <% end %>
-              </li>
-              <li class="nav-list">
-                <%= link_to popular_path do %>
-                  <img src="/assets/popular.png">
-                <% end %>
-              </li>
-            </ul>
-          <% end %>
-        </div>
-      </nav>
-    </header>
+    <%= render 'layouts/header' %>
     <div class="text-center"><%= flash.now[:notice] %></div>
     <div class="text-center"><%= flash.now[:error] %></div>
     <div class="text-center"><%= flash.now[:email] %></div>
     <%= yield %>
-    <aside class="sidebar">
-      <div class="sidebar-inner">
-        <h4 class="sidebar-ttl">Menu</h4>
-        <i class="fas fa-times-circle sidebar-icon"></i>
-      </div>
-      <ul class="sidebar-list">
-      <% if user_signed_in? %>
-        <li class="sidebar-txt"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-        <li class="sidebar-txt"><%= link_to "Create Post", new_post_image_path %></li>
-        <li class="sidebar-txt"><%= link_to "My Page", user_path(current_user.id) %></li>
-        <li class="sidebar-txt"><%= link_to "Contact Us", new_inquiry_path %></li>
-      <% elsif admin_signed_in? %>
-        <li class="sidebar-txt"><%= link_to "Log Out", destroy_admin_session_path, method: :delete %></li>
-        <li class="sidebar-txt"><%= link_to "Users", admins_users_path %></li>
-        <li class="sidebar-txt"><%= link_to "Posts", admins_post_images_path %></li>
-      <% else %>
-        <li class="sidebar-txt"><%= link_to "Sign Up", new_user_registration_path %></li>
-        <li class="sidebar-txt"><%= link_to "Log In", new_user_session_path %></li>
-        <li class="sidebar-txt"><%= link_to "About", about_path %></li>
-      <% end %>
-      </ul>
-    </aside>
-    <div class="sidebar-bg"></div>
+    <%= render 'layouts/sidebar' %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

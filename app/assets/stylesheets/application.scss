@@ -24,7 +24,6 @@
 .container {
   width: 100%;
 }
-
 .header-icon {
   color: #000;
   font-size: 40px;
@@ -35,16 +34,9 @@
   font-size: 30px;
   list-style: none;
 }
-
 .nav-list img {
   width: 200px;
 }
-
-// .navbar img {
-//   width: 150px;
-// }
-
-
 .sidebar {
   padding: 16px;
   width: 220px;
@@ -91,43 +83,55 @@
   z-index: 3;
   display: none;
 }
-
 .logo {
   text-align: center;
 }
-
 .logo img {
   width: 400px
 }
-
 .tags {
   margin: 30px;
 }
-
 .tags > span {
   padding: 10px;
 }
-
 .search-form {
   margin: 20px auto;
   font-size: 25px;
 }
-
 .search-box {
   width: 300px;
 }
-
 .search-btn {
 }
-
 .image-item {
   margin: 10px;
 }
-
 .session {
   margin: 30px auto;
 }
-
 .registration {
   margin: 30px auto;
+}
+.about-img {
+  background-image: image-url("about.jpg");
+  background-size: cover;
+  background-position: bottom;
+  height: 700px;
+  width: 100%;
+}
+.about-ttl {
+  padding: 30px;
+  font-size: 60px;
+}
+.about-text {
+  font-size: 18px;
+  padding-bottom: 40px;
+}
+.footer {
+  text-align: center;
+  height: 100px;
+  width: 100%;
+  margin-top: 60px;
+  line-height: 100px;
 }
