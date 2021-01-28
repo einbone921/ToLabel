@@ -59,7 +59,6 @@
   <div class="row">
     <div class="col-md-7"></div>
     <div class="col-md-5">
-      <% if user_signed_in? %>
         <div class="comment">
           <p>コメント<i class="far fa-comment-alt"></i>：<%= @post_image.post_comments.count %></p>
           <% @post_image.post_comments.each do |post_comment| %>
@@ -76,6 +75,7 @@
           <% end %>
         </div>
 
+      <% if user_signed_in? %>
         <div class="comment-form">
           <%= form_with(model:[@post_image, @post_comment], local: true) do |f| %>
             <p><%= f.text_area :comment, rows:'5', placeholder: "コメント", style:"width:100%"; %></p>
