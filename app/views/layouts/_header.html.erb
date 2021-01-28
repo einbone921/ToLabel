@@ -5,24 +5,24 @@
       <% if admin_signed_in? %>
         <div class="nav-list mx-auto">
           <%= link_to root_path do %>
-            <img src="/assets/Label.png">
+            <%= image_tag 'Label.png' %>
           <% end %>
         </div>
       <% else %>
         <ul class="navbar ml-auto">
           <li class="nav-list">
             <%= link_to new_posts_path do %>
-              <img src="/assets/new.png">
+              <%= image_tag 'new.png' %>
             <% end %>
           </li>
           <li class="nav-list">
             <%= link_to root_path do %>
-              <img src="/assets/Label.png">
+              <%= image_tag 'Label.png' %>
             <% end %>
           </li>
           <li class="nav-list">
             <%= link_to popular_path do %>
-              <img src="/assets/popular.png">
+              <%= image_tag 'popular.png' %>
             <% end %>
           </li>
         </ul>
