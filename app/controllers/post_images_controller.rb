@@ -14,6 +14,7 @@ class PostImagesController < ApplicationController
     tag_list = params[:post_image][:tag_names].split(/[[:blank:]]/)
     if @post_image.save
       @post_image.save_tags(tag_list)
+      flash[:notice] = "投稿を作成しました"
       redirect_to post_image_path(@post_image)
     else
       render "new"
@@ -51,6 +52,7 @@ class PostImagesController < ApplicationController
     tag_list = params[:post_image][:tag_names].split(/[[:blank:]]/)
     if @post_image.update(post_image_params)
       @post_image.save_tags(tag_list)
+      flash[:notice] = "投稿を更新しました"
       redirect_to post_image_path(@post_image)
     else
       render "edit"
@@ -59,6 +61,7 @@ class PostImagesController < ApplicationController
 
   def destroy
     @post_image.destroy
+    flash.now[:notice] = "投稿を削除しました"
     redirect_to post_images_path
   end
 
