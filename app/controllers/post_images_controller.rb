@@ -75,7 +75,7 @@ class PostImagesController < ApplicationController
     params.require(:post_image).permit(:tag_names)
   end
 
-  # 対象レコードの特定し変数に代入（before_actionで指定のメソッドの実行の際に使用）
+　# 共通処理のメソッド化
   def set_post_image
     @post_image = PostImage.find(params[:id])
   end
