@@ -1,10 +1,12 @@
 <div class="container">
   <div class="post-image">
-    <p class="card-item mx-auto mt-4 shadow-lg"><%= attachment_image_tag @post_image, :post_image, size:"600x600" %></p>
+    <p class="card-item mx-auto mt-4 shadow-lg">
+      <%= attachment_image_tag @post_image, :post_image, size:"600x600" %>
+    </p>
   </div>
   <div class="icon">
     <ul class="icon-list">
-      <li class="icon-item" id="favorite-btn">
+      <li class="icon-item" id="favorite-btn_<%= @post_image.id %>">
         <%= render 'favorites/favorite-btn', post_image: @post_image %>
       </li>
       <li class="icon-item">
