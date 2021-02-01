@@ -75,7 +75,6 @@ class PostImagesController < ApplicationController
     params.require(:post_image).permit(:tag_names)
   end
 
-　# 共通処理のメソッド化
   def set_post_image
     @post_image = PostImage.find(params[:id])
   end
