@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def check_guest
-    if resource.email == 'guest@example.com'
+    if @user.email == 'guest@example.com'
       redirect_to root_path, notice: "※ゲストユーザーは削除できません。"
     end
   end
