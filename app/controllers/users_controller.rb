@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @post_images = @user.post_images
-    @favorites_list = current_user.favorited_posts
+    @favorites_list = @user.favorited_posts
   end
 
   def edit
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def check_guest
-    if @user.email == 'guest@example.com'
+    if resource.email == 'guest@example.com'
       redirect_to root_path, notice: "※ゲストユーザーは削除できません。"
     end
   end
@@ -49,7 +49,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :email, :profile_image)
   end
 
-  # 共通処理のメソッド化
   def set_user
     @user = User.find(params[:id])
   end
