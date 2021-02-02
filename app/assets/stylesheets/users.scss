@@ -30,7 +30,7 @@
 
 .relationships {
   text-align: center;
-
+  margin: 30px;
 }
 
 .relationships h5 {
@@ -85,31 +85,50 @@
   font-size: 20px;
 }
 
-.tabnav {
-  margin: 0;
-  padding: 0;
+.wrap {
+  width: 100%;
+  margin: auto;
 }
 
-.tabnav li {
-  display: inline;
+#tab-menu {
+  display: flex;
+  margin-bottom: 0;
+  // border-bottom: 1px solid #000;
+  border-bottom: 1px solid #ddd;
 }
 
-.tabnav li a {
-  display: inline-block;
-  background: #405dca;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px 5px 0 0;
+#tab-menu li {
+  list-style-type: none;
+  width: 10%;
+}
+
+#tab-menu li a {
+  color: #000;
   text-decoration: none;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  background: #fff;
+  border-bottom: none;
 }
 
-.tabnav li a:hover,
-.tabnav li a.active {
+#tab-menu .active {
   background: #ddd;
-  color: #333;
+  color: #000;
+  border: 1px solid #ddd;
 }
 
-.tabcontent {
-  padding: 20px;
-  border: 1px dotted #ccc;
+#tab-contents {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#tab-contents .tab {
+  width: 100%;
+  background: #fff;
+}
+
+#tab-contents p {
+  color: #000;
+  line-height: 2.5;
 }
