@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  # before_action :check_guest, only: :hide
   before_action :set_user
+  before_action :check_guest, only: :hide
 
   def show
     @post_images = @user.post_images
+    @favorites_list = @user.favorited_posts
   end
 
   def edit
@@ -36,11 +37,11 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  # def check_guest
-  #   if resource.email == 'guest@example.com'
-  #     redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
-  #   end
-  # end
+  def check_guest
+    if @user.email == 'guest@example.com'
+      redirect_to root_path, notice: "※ゲストユーザーは削除できません。"
+    end
+  end
 
   private
 
@@ -48,7 +49,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :email, :profile_image)
   end
 
-  # 対象レコードの特定し変数に代入（before_actionで指定のメソッドの実行の際に使用）
   def set_user
     @user = User.find(params[:id])
   end

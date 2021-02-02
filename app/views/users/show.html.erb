@@ -31,14 +31,28 @@
     </div>
   </div>
 
-  <h4>投稿一覧</h4>
-  <div class="row">
-    <% @post_images.each do |post| %>
-      <div class="image-item mt-4 shadow-lg">
-        <%= link_to post_image_path(post) do %>
-          <%= attachment_image_tag post, :post_image, size:"200x200" %>
+ <div class="wrap">
+    <ul id="tab-menu">
+      <li><a href="#tab1" class="active">Posts</a></li>
+      <li><a href="#tab2" class="">Favorites</a></li>
+    </ul>
+
+    <div id="tab-contents">
+      <div id="tab1" class="tab">
+        <!--<h4>Posts</h4>-->
+        <div class="row">
+          <%= render "post_images/index", post_images: @post_images %>
+        </div>
+      </div>
+
+      <div id="tab2" class="tab">
+        <% if user_signed_in? %>
+        <!--<h4>Favorites</h4>-->
+        <div class="row">
+          <%= render "post_images/index", post_images: @favorites_list %>
+        </div>
         <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
