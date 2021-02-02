@@ -31,15 +31,28 @@
     </div>
   </div>
 
-  <h4>投稿一覧</h4>
-  <div class="row">
-    <%= render "post_images/index", post_images: @post_images %>
-  </div>
+ <div class="wrap">
+    <ul id="tab-menu">
+      <li><a href="#tab1" class="active">Posts</a></li>
+      <li><a href="#tab2" class="">Favorites</a></li>
+    </ul>
 
-  <% if user_signed_in? %>
-  <h4>Favorites_list</h4>
-  <div class="row">
-    <%= render "post_images/index", post_images: @favorites_list %>
+    <div id="tab-contents">
+      <div id="tab1" class="tab">
+        <!--<h4>Posts</h4>-->
+        <div class="row">
+          <%= render "post_images/index", post_images: @post_images %>
+        </div>
+      </div>
+
+      <div id="tab2" class="tab">
+        <% if user_signed_in? %>
+        <!--<h4>Favorites</h4>-->
+        <div class="row">
+          <%= render "post_images/index", post_images: @favorites_list %>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <% end %>
 </div>
