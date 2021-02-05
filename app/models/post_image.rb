@@ -1,19 +1,15 @@
 class PostImage < ApplicationRecord
   belongs_to :user
+  belongs_to :album, optional: true
   has_many :post_comments, dependent: :destroy
-
-  #------------いいね機能の実装処理--------------
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
+  has_many :tag_maps, dependent: :destroy
+  has_many :tags, through: :tag_maps
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-  #--------------------END------------------------
-
-  #----------------タグ機能の実装処理---------------------------------
-  has_many :tag_maps, dependent: :destroy
-  has_many :tags, through: :tag_maps
 
   def save_tags(save_post_image_tags)
     current_tags = tags.pluck(:tag_name) unless tags.nil?
@@ -29,13 +25,12 @@ class PostImage < ApplicationRecord
       tags << post_image_tag
     end
   end
-  #---------------------------END----------------------------------
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
   validates :post_image, presence: true
-  validates :caption, presence: true
+  # validates :caption, presence: true
 
   attachment :post_image
 end

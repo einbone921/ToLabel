@@ -1,0 +1,21 @@
+<%= form_for(@album, url: albums_path) do |f| %>
+  <table>
+    <tbody>
+      <tr>
+        <td>画像</td>
+        <td><%= f.attachment_field :post_images_post_images, multiple: true %></td>
+      </tr>
+      <tr>
+        <td>タイトル</td>
+        <td><%= f.text_field :title, autofocus: true %></td>
+      </tr>
+      <tr>
+        <td>タイトル</td>
+        <td><%= f.text_field :content, autofocus: true %></td>
+      </tr>
+      <tr>
+        <td><%= f.submit "追加", class: "btn btn-primary" %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

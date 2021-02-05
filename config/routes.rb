@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     put :hide, on: :member
   end
 
+  resources :albums, only: [:new, :show, :create, :edit, :update, :destroy]
+
   resources :post_images, only: [:new, :show, :create, :index, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
