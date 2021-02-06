@@ -7,6 +7,7 @@
   <% if user_signed_in? %>
     <li class="sidebar-txt"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
     <li class="sidebar-txt"><%= link_to "Create Post", new_post_image_path %></li>
+    <li class="sidebar-txt"><%= link_to "Create Album", new_album_path %></li>
     <li class="sidebar-txt"><%= link_to "My Page", user_path(current_user.id) %></li>
     <li class="sidebar-txt"><%= link_to "Contact Us", new_inquiry_path %></li>
   <% elsif admin_signed_in? %>

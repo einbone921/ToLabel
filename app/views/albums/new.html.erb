@@ -1,0 +1,23 @@
+<%= form_for(@album, url: albums_path) do |f| %>
+<div class="contaier">
+  <table class="mx-auto" style="height: 500px;">
+    <tbody>
+      <tr>
+        <td>Image</td>
+        <td><%= f.attachment_field :post_images_post_images, multiple: true %></td>
+      </tr>
+      <tr>
+        <td>Title</td>
+        <td><%= f.text_field :title, autofocus: true %></td>
+      </tr>
+      <tr>
+        <td>Content</td>
+        <td><%= f.text_field :content, autofocus: true %></td>
+      </tr>
+      <tr>
+        <td><%= f.submit "Upload", class: "btn btn-primary" %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<% end %>
