@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+  before_action :set_album, except: [:new, :create]
 
   def new
     @album = Album.new
@@ -15,21 +16,33 @@ class AlbumsController < ApplicationController
     @album.post_images.each do |post_image|
       # API側にpost_imageのpost_image_idカラムの値を渡す
       tags = Vision.get_image_data(post_image.post_image_id)
-      tags.each do |tag|
-        post_image.tags.create(tag_name: tag)
-      end
+      post_image.save_tags(tags)
     end
     redirect_to album_path(@album)
   end
 
   def show
-    @album = Album.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    @album.destroy
+    redirect_to user_path(@album.user)
   end
 
   private
 
   def album_params
     params.require(:album).permit(:title, :content, post_images_post_images: [])
+  end
+
+  def set_album
+    @album = Album.find(params[:id])
   end
 
 end

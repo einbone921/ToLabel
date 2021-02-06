@@ -17,11 +17,11 @@ class PostImage < ApplicationRecord
     new_tags = save_post_image_tags - current_tags
 
     old_tags.each do |old_name|
-      tags.delete Tag.find_by(tag_name: old_name)
+      tags.delete Tag.find_by(tag_name: old_name.downcase)
     end
 
     new_tags.each do |new_name|
-      post_image_tag = Tag.find_or_create_by(tag_name: new_name)
+      post_image_tag = Tag.find_or_create_by(tag_name: new_name.downcase)
       tags << post_image_tag
     end
   end

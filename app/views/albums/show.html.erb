@@ -1,9 +1,9 @@
-<% if @album.post_images.present? %>
-  <% @album.post_images.each do |image| %>
-    <%= link_to post_image_path(image) do %>
-      <%= attachment_image_tag image, :post_image, class: "default_image", size:"400x400" %>
+<div class="container" style="height: 500px;">
+  <div class="row">
+    <% if @album.post_images.present? %>
+      <%= render "post_images/index", post_images: @album.post_images %>
+    <% else %>
+      画像はありません。
     <% end %>
-  <% end %>
-<% else %>
-  画像はありません。
-<% end %>
+  </div>
+</div>
