@@ -343,10 +343,10 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
-  font-awesome-sass (~> 5.13)
-  geocoder
   factory_bot_rails
   faker
+  font-awesome-sass (~> 5.13)
+  geocoder
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

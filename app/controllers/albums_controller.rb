@@ -12,6 +12,13 @@ class AlbumsController < ApplicationController
       post_image.user_id = current_user.id
     end
     @album.save
+    @album.post_images.each do |post_image|
+      # API側にpost_imageのpost_image_idカラムの値を渡す
+      tags = Vision.get_image_data(post_image.post_image_id)
+      tags.each do |tag|
+        post_image.tags.create(tag_name: tag)
+      end
+    end
     redirect_to album_path(@album)
   end
 
