@@ -1,0 +1,9 @@
+<div class="container" style="height: 500px;">
+  <div class="row">
+    <% if @album.post_images.present? %>
+      <%= render "post_images/index", post_images: @album.post_images %>
+    <% else %>
+      画像はありません。
+    <% end %>
+  </div>
+</div>

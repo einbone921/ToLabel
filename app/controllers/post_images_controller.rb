@@ -8,9 +8,8 @@ class PostImagesController < ApplicationController
   end
 
   def create
-    @post_image = PostImage.new(post_image_params)
-    @post_image.user_id = current_user.id
-    # splitの指定を下記に指定することで、全角半角どちらでも空白での分割が可能
+    @post_image = current_user.post_images.new(post_image_params)
+    # splitの指定により、全角半角どちらでも空白での分割が可能
     tag_list = params[:post_image][:tag_names].split(/[[:blank:]]/)
     if @post_image.save
       @post_image.save_tags(tag_list)
@@ -42,7 +41,6 @@ class PostImagesController < ApplicationController
   def edit
     # @post_imageに結びついたタグを取得し、空白区切りで表示
     @tag_list = @post_image.tags.pluck(:tag_name).join(" ")
-    # ログインユーザがURLより他のユーザーの投稿編集画面に遷移した際に実行
     if @post_image.user != current_user
       redirect_to root_path
     end
