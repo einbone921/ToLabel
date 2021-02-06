@@ -62,7 +62,9 @@
     <div class="col-md-7"></div>
     <div class="col-md-5">
         <div class="comment">
-          <p>コメント<i class="far fa-comment-alt"></i>：<span class="comment-count"><%= @post_image.post_comments.count %></span></p>
+          <p>コメント<i class="far fa-comment-alt">
+            </i>：<span class="comment-count"><%= @post_image.post_comments.count %></span>
+          </p>
           <div id="comment_list">
             <%= render 'post_comments/index', post_image: @post_image %>
           </div>

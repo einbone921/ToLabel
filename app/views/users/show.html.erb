@@ -37,6 +37,7 @@
       <% if user_signed_in? %>
       <li><a href="#tab2" class="">Favorites</a></li>
       <% end %>
+      <li><a href="#tab3" class="">Albums</a></li>
     </ul>
 
     <div id="tab-contents">
@@ -49,6 +50,22 @@
       <div id="tab2" class="tab">
         <div class="row">
           <%= render "post_images/index", post_images: @favorites_list %>
+        </div>
+      </div>
+
+      <div id="tab3" class="tab">
+        <div class="row">
+          <% @albums.each do |album| %>
+            <% if album.post_images.present? %>
+              <% album.post_images.first(1).each do |image| %>
+                <%= link_to album_path(album) do %>
+                  <%= attachment_image_tag image, :post_image, class: "default_image", size:"200x200" %>
+                <% end %>
+              <% end %>
+            <% else %>
+              画像はありません。
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

@@ -41,7 +41,6 @@ class PostImagesController < ApplicationController
   def edit
     # @post_imageに結びついたタグを取得し、空白区切りで表示
     @tag_list = @post_image.tags.pluck(:tag_name).join(" ")
-    # ログインユーザがURLより他のユーザーの投稿編集画面に遷移した際に実行
     if @post_image.user != current_user
       redirect_to root_path
     end
@@ -78,5 +77,3 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.find(params[:id])
   end
 end
-
-

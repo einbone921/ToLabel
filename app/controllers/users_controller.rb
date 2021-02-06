@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     @post_images = @user.post_images
     @favorites_list = @user.favorited_posts
+    @albums = current_user.albums
   end
 
   def edit
