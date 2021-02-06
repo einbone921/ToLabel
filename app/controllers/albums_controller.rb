@@ -14,7 +14,7 @@ class AlbumsController < ApplicationController
     end
     @album.save
     @album.post_images.each do |post_image|
-      # API側にpost_imageのpost_image_idカラムの値を渡す
+      # API側にpost_imageのpost_image_idカラムの値を渡し、戻り値を代入
       tags = Vision.get_image_data(post_image.post_image_id)
       post_image.save_tags(tags)
     end
