@@ -1,5 +1,11 @@
 <%= form_for(@album, url: albums_path) do |f| %>
 <div class="contaier">
+  <div class="album-info">
+    <p class="text-center">
+      ※アルバム作成の際にアップロードされた写真にはAIによる画像処理機能により自動でラベルが発行されます。<br>
+      付与されたラベルは写真の編入画面にてご自身で変更することが可能です。
+    </p>
+  </div>
   <table class="mx-auto" style="height: 500px;">
     <tbody>
       <tr>
