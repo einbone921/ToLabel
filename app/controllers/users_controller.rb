@@ -9,9 +9,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if @user != current_user
-      redirect_to root_path
-    end
+    redirect_to root_path if @user != current_user
   end
 
   def update
