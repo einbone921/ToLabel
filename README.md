@@ -34,7 +34,10 @@
 
 * ER図  
 
-![ER_toLabel](https://user-images.githubusercontent.com/73771296/105993906-428bbd00-60ea-11eb-95f1-9f0547b10a75.png)
+![image](https://user-images.githubusercontent.com/73771296/108616410-7a1f2800-7450-11eb-88b7-54937382f4c2.png)
+
+* 機能一覧
+https://docs.google.com/spreadsheets/d/1h-3z6XyLYxO2Lg3afL6AOYUjer-DqbXTPQu12sQ6jIc/edit?usp=sharing
 
 * テーブル定義書
 
