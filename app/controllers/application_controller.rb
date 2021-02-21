@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
   def set_search
     @q = PostImage.ransack(params[:q])
     @post_images = @q.result

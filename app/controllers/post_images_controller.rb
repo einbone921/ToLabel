@@ -34,16 +34,14 @@ class PostImagesController < ApplicationController
     elsif @q = PostImage.ransack(params[:q])
       @post_images = @q.result
     else
-      @post_images = PostImage.all
+      @post_images = PostImage.where(is_active: true)
     end
   end
 
   def edit
     # @post_imageに結びついたタグを取得し、空白区切りで表示
     @tag_list = @post_image.tags.pluck(:tag_name).join(" ")
-    if @post_image.user != current_user
-      redirect_to root_path
-    end
+    redirect_to root_path if @post_image.user != current_user
   end
 
   def update
